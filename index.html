@@ -1,35 +1,44 @@
 <!doctype html>
 <html>
+
 	<head>
 		<title>A Webpage</title>
+		<script type="text/javascript">
+			var red = 0;
+			var blue = 0;
+			var green = 0;
+			var e = 0;
+			
+			function toRGBstr(red, green, blue) {
+				var r = toString(red);
+				var g = toString(green);
+				var b = toString(blue);
+				return "rgb(" + r + ", " + g + ", " + b + ")"
+			}
+			
+			function cycleBG() {
+				if (e == 0) { red += 1; if (red == 255) { e = 1; }}
+				else if (e == 1) { blue += 1; if (blue == 255) { e = 2; }}
+				else if (e == 2) { green += 1; if (green == 255) { e = 3; }}
+				else if (e == 3) { red -= 1; if (red == 0) { e = 4; }}
+				else if (e == 4) { blue -= 1; if (blue == 0) { e = 5; }}
+				else if (e == 5) { green -= 1; if (green == 0) { e = 0; }}					
+				document.getElementById("derp").style.backgroundColor = toRGBstr(red, green, blue);
+				alert(document.getElementById("derp").style.backgroundColor);
+			}
+		</script>
 	</head>
 	
-	<body>
 	
+	<body>
 		Geklp wolrf/
-		
-		<p id="derp"></p>
+		<p id="derp">hai</p>
 		
 		<script type="text/javascript">
-		
-			function thing() {
-				
-				var red = 0;
-				var blue = 0;
-				var green = 0;
-				var e = 0;
-				
-				while True {
-					
-					if (e == 0) {  }
-					
-				}
-				
-			}
-		
-			document.getElementsByTagName("body")[0].style.backgroundColor = "rgb(50, 50, 50)";
 			document.getElementById("derp").innerHTML = "Test";
+			setInterval(cycleBG, 10);
 		</script>
-	
+		
 	</body>
+	
 </html>
